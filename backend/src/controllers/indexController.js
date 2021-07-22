@@ -4,7 +4,6 @@ const pool = require("../database/database");
 const getToDos = async (req, res) => {
   try {
     const response = await pool.query("SELECT * FROM todo");
-    console.log(response.rows[0]);
     res.status(200).json(response.rows);
   } catch (error) {
     console.error(error);
@@ -18,7 +17,6 @@ const getToDoById = async (req, res) => {
     const response = await pool.query("SELECT * FROM todo WHERE todo_id = $1", [
       id,
     ]);
-    console.log(response.rows[0]);
     res.status(200).json(response.rows);
   } catch (error) {
     console.error(error);
@@ -33,7 +31,6 @@ const createToDo = async (req, res) => {
       "INSERT INTO todo (description) VALUES ($1) RETURNING *",
       [description]
     );
-    console.log(response.rows[0]);
     res.status(200).json(response.rows[0]);
     res.send("To-Do added");
   } catch (error) {
@@ -50,7 +47,6 @@ const updateToDoById = async (req, res) => {
       "UPDATE todo SET description = $1 WHERE todo_id = $2",
       [description, id]
     );
-    console.log(response);
     res.json("To-Do sucessfully updated");
   } catch (error) {
     console.error(error);
@@ -64,7 +60,6 @@ const deleteToDoById = async (req, res) => {
     const response = await pool.query("DELETE FROM todo WHERE todo_id = $1", [
       id,
     ]);
-    console.log(response);
     res.status(200).json(`To-Do ${id} sucessfully deleted`);
   } catch (error) {
     console.error(error);

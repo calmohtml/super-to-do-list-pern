@@ -35,3 +35,15 @@ code {
   width: 90%;
   margin: 0 auto;
 }
+
+.ReactModal__Content {
+  position: absolute;
+  inset: 40px;
+  border: 1px solid rgb(204, 204, 204);
+  background: $violet;
+  overflow: auto;
+  border: 0.2rem solid $yellow;
+  border-radius: 4px;
+  outline: currentcolor none medium;
+  padding: 20px;
+}

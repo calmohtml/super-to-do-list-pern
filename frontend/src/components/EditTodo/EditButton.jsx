@@ -43,28 +43,33 @@ export const EditButton = ({ todo }) => {
           setShowModal(false);
         }}
         shouldCloseOnOverlayClick={false}
+        className="modal__container"
       >
-        <div id={`id${todo.todo_id}`}>
-          <h1>Edit To-Do</h1>
-          <input
-            type="text"
-            value={description}
-            onChange={(event) => setDescription(event.target.value)}
-          />
-          <button
-            onClick={(event) => {
-              updateDescription(event);
-            }}
-          >
-            Edit
-          </button>
-          <button
-            onClick={() => {
-              setShowModal(false);
-            }}
-          >
-            Quit
-          </button>
+        <div id={`id${todo.todo_id}`} className="modal">
+          <div className="modal__component modal__input">
+            <h1>Edit To-Do</h1>
+            <input
+              type="text"
+              value={description}
+              onChange={(event) => setDescription(event.target.value)}
+            />
+          </div>
+          <div className="modal__component modal__buttons">
+            <button
+              onClick={(event) => {
+                updateDescription(event);
+              }}
+            >
+              Edit
+            </button>
+            <button
+              onClick={() => {
+                setShowModal(false);
+              }}
+            >
+              Quit
+            </button>
+          </div>
         </div>
       </Modal>
     </Fragment>
